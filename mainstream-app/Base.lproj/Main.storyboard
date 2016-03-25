@@ -1,11 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="XHQ-sf-mF2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="6ci-0o-MC0">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
-        <!--Concert Table View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="MTS-7A-LsX">
+            <objects>
+                <navigationController id="6ci-0o-MC0" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5Uu-6t-xJg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="XHQ-sf-mF2" kind="relationship" relationship="rootViewController" id="oZn-2R-ZMk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iET-bF-Y8W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-360" y="394"/>
+        </scene>
+        <!--Konzerte-->
         <scene sceneID="rCg-84-NCQ">
             <objects>
                 <tableViewController id="XHQ-sf-mF2" customClass="ConcertTableViewController" customModule="mainstream_app" customModuleProvider="target" sceneMemberID="viewController">
@@ -13,10 +29,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="4TY-wO-dtB">
+                            <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ConcertTableViewCell" rowHeight="90" id="cxx-fd-Z7e" customClass="ConcertTableViewCell" customModule="mainstream_app" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="600" height="90"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                                <rect key="frame" x="0.0" y="136" width="600" height="90"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cxx-fd-Z7e" id="UJk-V9-H78">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
@@ -53,6 +74,7 @@
                             <outlet property="delegate" destination="XHQ-sf-mF2" id="uke-k0-guj"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Konzerte" id="Ksc-gT-wYN"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Okb-T0-Gn0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
