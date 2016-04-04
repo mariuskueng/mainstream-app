@@ -15,7 +15,7 @@
                         <color key="barTintColor" red="0.77254901960784317" green="0.69803921568627447" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="XHQ-sf-mF2" kind="relationship" relationship="rootViewController" id="oZn-2R-ZMk"/>
+                        <segue destination="Gh9-yo-PbQ" kind="relationship" relationship="rootViewController" id="jnF-5Q-3gg"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iET-bF-Y8W" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -23,63 +23,73 @@
             <point key="canvasLocation" x="-360" y="394"/>
         </scene>
         <!--Konzerte-->
-        <scene sceneID="rCg-84-NCQ">
+        <scene sceneID="fEN-bA-JUc">
             <objects>
-                <tableViewController id="XHQ-sf-mF2" customClass="ConcertTableViewController" customModule="mainstream_app" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" id="v9d-bG-XIr">
+                <viewController id="Gh9-yo-PbQ" customClass="ConcertTableViewController" customModule="mainstream_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="99" sectionHeaderHeight="28" sectionFooterHeight="28" id="PdW-ko-pR2">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" id="4TY-wO-dtB">
-                            <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="EmO-ub-pPW">
+                            <rect key="frame" x="0.0" y="64" width="600" height="79"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </searchBar>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RMz-vL-efs">
+                                    <rect key="frame" x="179" y="-1" width="180" height="80"/>
+                                    <state key="normal" title="Datum">
+                                        <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mzS-DZ-Gnk">
+                                    <rect key="frame" x="0.0" y="0.0" width="180" height="79"/>
+                                    <state key="normal" title="Städte">
+                                        <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ConcertTableViewCell" rowHeight="90" id="cxx-fd-Z7e" customClass="ConcertTableViewCell" customModule="mainstream_app" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="136" width="600" height="90"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ConcertTableViewCell" rowHeight="90" id="gsW-hm-8mi" customClass="ConcertTableViewCell" customModule="mainstream_app" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="171" width="600" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cxx-fd-Z7e" id="UJk-V9-H78">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gsW-hm-8mi" id="d3e-HH-qgK">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="artist" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="V42-jU-uJJ">
-                                            <rect key="frame" x="16" y="18" width="199" height="40"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="venue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="xA7-GD-Xm1">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="venue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="2vp-a4-Db2">
                                             <rect key="frame" x="281" y="18" width="162" height="21"/>
                                             <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="city" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="eK8-dN-sUe">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="city" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="0Bp-Zo-THC">
                                             <rect key="frame" x="281" y="47" width="162" height="21"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="artist" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="bMr-XD-GVL">
+                                            <rect key="frame" x="16" y="18" width="199" height="40"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="artistLabel" destination="V42-jU-uJJ" id="q2S-mL-ZDw"/>
-                                    <outlet property="cityLabel" destination="eK8-dN-sUe" id="LJF-36-Dsj"/>
-                                    <outlet property="venueLabel" destination="xA7-GD-Xm1" id="8dR-8L-zoV"/>
+                                    <outlet property="artistLabel" destination="bMr-XD-GVL" id="j6A-e4-D3J"/>
+                                    <outlet property="cityLabel" destination="0Bp-Zo-THC" id="84N-Yx-9UY"/>
+                                    <outlet property="venueLabel" destination="2vp-a4-Db2" id="YXR-4I-Gji"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="XHQ-sf-mF2" id="HlW-yI-hA1"/>
-                            <outlet property="delegate" destination="XHQ-sf-mF2" id="uke-k0-guj"/>
-                        </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Konzerte" id="Ksc-gT-wYN"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Okb-T0-Gn0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                    <navigationItem key="navigationItem" title="Konzerte" id="aF4-Db-mgD"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p2k-fG-Ect" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="411" y="394"/>
+            <point key="canvasLocation" x="367" y="394"/>
         </scene>
     </scenes>
 </document>
