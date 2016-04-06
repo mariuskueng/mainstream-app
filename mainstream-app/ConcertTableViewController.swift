@@ -10,15 +10,24 @@ import UIKit
 
 class ConcertTableViewController: UITableViewController {
     
-    var concerts = [Concert]()
+    struct Objects {
+        
+        var sectionName : String!
+        var sectionObjects : [Concert]!
+    }
+    
+    var objectArray = [Objects]()
 
+    var concerts = Concert.getConcerts()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        concerts.append(Concert(date: "", artist: "DIIV", venue: "Mascotte", city: "Zürich"))
-        concerts.append(Concert(date: "", artist: "The Libertines / Reverend And The Makers", venue: "X-Tra", city: "Zürich"))
-        concerts.append(Concert(date: "", artist: "The Sisters Of Mercy / LSD on CIA", venue: "Fri-Son", city: "Fribourg"))
+        // http://stackoverflow.com/questions/31136084/how-can-i-group-tableview-items-from-a-dictionary-in-swift
+        for (key, value) in concerts {
+            print("\(key) -> \(value)")
+            objectArray.append(Objects(sectionName: key, sectionObjects: value))
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,18 +35,26 @@ class ConcertTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return objectArray.count
+    }
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return concerts.count
+        return objectArray[section].sectionObjects.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let concert = tableView.dequeueReusableCellWithIdentifier("ConcertTableViewCell") as! ConcertTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("ConcertTableViewCell") as! ConcertTableViewCell
         
-        concert.artistLabel.text = concerts[indexPath.row].artist
-        concert.venueLabel.text = concerts[indexPath.row].venue
-        concert.cityLabel.text = concerts[indexPath.row].city
+        cell.artistLabel.text = objectArray[indexPath.section].sectionObjects[indexPath.row].artist
+        cell.venueLabel.text = objectArray[indexPath.section].sectionObjects[indexPath.row].venue
+        cell.cityLabel.text = objectArray[indexPath.section].sectionObjects[indexPath.row].city
         
-        return concert
+        return cell
+    }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return objectArray[section].sectionName
     }
 
 
