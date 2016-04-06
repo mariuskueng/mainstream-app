@@ -20,6 +20,9 @@ class ConcertTableViewController: UITableViewController {
 
     var concerts = Concert.getConcerts()
     
+    @IBOutlet weak var cityButton: UIButton!
+    @IBOutlet weak var dateButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -28,6 +31,10 @@ class ConcertTableViewController: UITableViewController {
             print("\(key) -> \(value)")
             objectArray.append(Objects(sectionName: key, sectionObjects: value))
         }
+        
+        let gray = UIColor(white:0.73, alpha:1.0)
+        cityButton.backgroundColor = gray
+        dateButton.backgroundColor = gray
     }
 
     override func didReceiveMemoryWarning() {
