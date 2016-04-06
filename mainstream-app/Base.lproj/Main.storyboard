@@ -3,6 +3,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -59,7 +61,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="venue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="2vp-a4-Db2">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="venue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="2vp-a4-Db2">
                                             <rect key="frame" x="281" y="18" width="80" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="80" id="h7a-KY-Y6S"/>
@@ -68,7 +70,7 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="city" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="0Bp-Zo-THC">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="city" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="0Bp-Zo-THC">
                                             <rect key="frame" x="281" y="47" width="80" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="80" id="qhF-dH-U4q"/>
@@ -77,8 +79,8 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="artist" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="bMr-XD-GVL">
-                                            <rect key="frame" x="16" y="18" width="180" height="40"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="artist" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="bMr-XD-GVL">
+                                            <rect key="frame" x="16" y="18" width="180" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="180" id="0QP-DN-TCd"/>
                                             </constraints>
@@ -89,8 +91,11 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailingMargin" secondItem="2vp-a4-Db2" secondAttribute="trailing" constant="6" id="2Rj-7h-Dm9"/>
+                                        <constraint firstItem="2vp-a4-Db2" firstAttribute="baseline" secondItem="bMr-XD-GVL" secondAttribute="firstBaseline" id="a8k-HG-qQy"/>
                                         <constraint firstItem="bMr-XD-GVL" firstAttribute="leading" secondItem="d3e-HH-qgK" secondAttribute="leadingMargin" constant="8" id="b4N-X6-lXN"/>
+                                        <constraint firstItem="0Bp-Zo-THC" firstAttribute="top" secondItem="2vp-a4-Db2" secondAttribute="bottom" constant="8" symbolic="YES" id="fo1-I5-AZa"/>
                                         <constraint firstItem="bMr-XD-GVL" firstAttribute="leading" secondItem="d3e-HH-qgK" secondAttribute="leadingMargin" constant="8" id="lDF-Jj-ppc"/>
+                                        <constraint firstItem="2vp-a4-Db2" firstAttribute="top" secondItem="d3e-HH-qgK" secondAttribute="topMargin" constant="10" id="lqy-Yk-rcP"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="0Bp-Zo-THC" secondAttribute="trailing" constant="6" id="ph8-hp-hhA"/>
                                     </constraints>
                                 </tableViewCellContentView>
