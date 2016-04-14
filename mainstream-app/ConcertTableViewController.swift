@@ -31,10 +31,6 @@ class ConcertTableViewController: UITableViewController {
             print("\(key) -> \(value)")
             objectArray.append(Objects(sectionName: key, sectionObjects: value))
         }
-        
-        let gray = UIColor(white:0.73, alpha:1.0)
-        cityButton.backgroundColor = gray
-        dateButton.backgroundColor = gray
 
         let allConcerts = Array(concerts.values).flatMap{$0}
         let cities = allConcerts.map{ c in c.city}
