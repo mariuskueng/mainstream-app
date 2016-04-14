@@ -39,16 +39,16 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filtern nach" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W2h-wC-K6c">
-                                    <rect key="frame" x="18" y="0.0" width="104" height="30"/>
+                                    <rect key="frame" x="18" y="0.0" width="95" height="30"/>
                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mzS-DZ-Gnk">
-                                    <rect key="frame" x="130" y="29" width="120" height="80"/>
+                                    <rect key="frame" x="186" y="29" width="189" height="80"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="120" id="MGb-Ao-cx5"/>
-                                        <constraint firstAttribute="width" constant="120" id="OZ3-at-0je"/>
+                                        <constraint firstAttribute="width" constant="189" id="tpC-sg-v9f"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                     <state key="normal" title="Stadt">
@@ -60,9 +60,10 @@
                                         </mask>
                                     </variation>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RMz-vL-efs">
-                                    <rect key="frame" x="18" y="29" width="48" height="80"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RMz-vL-efs">
+                                    <rect key="frame" x="0.0" y="29" width="187" height="80"/>
                                     <constraints>
+                                        <constraint firstAttribute="width" constant="187" id="Pj7-vR-bAj"/>
                                         <constraint firstAttribute="width" constant="120" id="TGV-p6-ygT"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
@@ -78,18 +79,31 @@
                             </subviews>
                             <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
-                                <constraint firstItem="mzS-DZ-Gnk" firstAttribute="firstBaseline" secondItem="RMz-vL-efs" secondAttribute="baseline" id="45v-MV-85O"/>
-                                <constraint firstItem="mzS-DZ-Gnk" firstAttribute="leading" secondItem="EmO-ub-pPW" secondAttribute="leading" constant="130" id="ELq-4H-X8Q"/>
-                                <constraint firstItem="mzS-DZ-Gnk" firstAttribute="top" secondItem="EmO-ub-pPW" secondAttribute="top" constant="29" id="GDy-av-aIl"/>
+                                <constraint firstAttribute="trailing" secondItem="RMz-vL-efs" secondAttribute="trailing" constant="188" id="4e1-uQ-AFI"/>
+                                <constraint firstItem="RMz-vL-efs" firstAttribute="width" secondItem="mzS-DZ-Gnk" secondAttribute="width" id="Beq-Wq-92H"/>
+                                <constraint firstAttribute="trailing" secondItem="mzS-DZ-Gnk" secondAttribute="trailing" id="Cni-iu-N16"/>
+                                <constraint firstItem="mzS-DZ-Gnk" firstAttribute="baseline" secondItem="RMz-vL-efs" secondAttribute="firstBaseline" id="Hi1-I5-HPg"/>
                                 <constraint firstAttribute="bottom" secondItem="W2h-wC-K6c" secondAttribute="bottom" constant="79" id="KRa-Bm-miF"/>
-                                <constraint firstItem="mzS-DZ-Gnk" firstAttribute="baseline" secondItem="RMz-vL-efs" secondAttribute="firstBaseline" id="KXl-19-2Yp"/>
-                                <constraint firstAttribute="bottom" secondItem="mzS-DZ-Gnk" secondAttribute="bottom" id="KgW-U2-LwS"/>
-                                <constraint firstItem="mzS-DZ-Gnk" firstAttribute="top" secondItem="RMz-vL-efs" secondAttribute="top" id="UOU-eH-J12"/>
                                 <constraint firstItem="W2h-wC-K6c" firstAttribute="leading" secondItem="EmO-ub-pPW" secondAttribute="leading" constant="18" id="VUx-xw-a9B"/>
-                                <constraint firstItem="mzS-DZ-Gnk" firstAttribute="leading" secondItem="W2h-wC-K6c" secondAttribute="trailing" constant="8" symbolic="YES" id="Zzl-Fr-4Rw"/>
-                                <constraint firstItem="mzS-DZ-Gnk" firstAttribute="leading" secondItem="RMz-vL-efs" secondAttribute="trailing" constant="8" symbolic="YES" id="fwS-4J-DAV"/>
+                                <constraint firstItem="mzS-DZ-Gnk" firstAttribute="firstBaseline" secondItem="RMz-vL-efs" secondAttribute="baseline" id="X6U-pX-anR"/>
+                                <constraint firstItem="mzS-DZ-Gnk" firstAttribute="top" secondItem="EmO-ub-pPW" secondAttribute="top" constant="29" id="eH9-FT-3jS"/>
                                 <constraint firstItem="W2h-wC-K6c" firstAttribute="top" secondItem="EmO-ub-pPW" secondAttribute="top" id="fyY-7z-woO"/>
+                                <constraint firstAttribute="bottom" secondItem="mzS-DZ-Gnk" secondAttribute="bottom" id="mgG-He-TXX"/>
+                                <constraint firstItem="RMz-vL-efs" firstAttribute="leading" secondItem="EmO-ub-pPW" secondAttribute="leading" id="mkQ-lc-65h"/>
+                                <constraint firstAttribute="trailing" secondItem="mzS-DZ-Gnk" secondAttribute="trailing" id="qCN-bc-Faa"/>
+                                <constraint firstItem="mzS-DZ-Gnk" firstAttribute="leading" secondItem="EmO-ub-pPW" secondAttribute="leading" constant="186" id="qMz-kb-QuK"/>
+                                <constraint firstAttribute="bottom" secondItem="RMz-vL-efs" secondAttribute="bottom" id="qpo-vk-dQ1"/>
+                                <constraint firstItem="RMz-vL-efs" firstAttribute="leading" secondItem="EmO-ub-pPW" secondAttribute="leading" id="w9S-cd-IMd"/>
                             </constraints>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="4e1-uQ-AFI"/>
+                                    <exclude reference="Beq-Wq-92H"/>
+                                    <exclude reference="w9S-cd-IMd"/>
+                                    <exclude reference="Cni-iu-N16"/>
+                                    <exclude reference="qMz-kb-QuK"/>
+                                </mask>
+                            </variation>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ConcertTableViewCell" rowHeight="81" id="gsW-hm-8mi" customClass="ConcertTableViewCell" customModule="mainstream_app" customModuleProvider="target">
