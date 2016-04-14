@@ -198,7 +198,6 @@
                     <connections>
                         <outlet property="cityButton" destination="mzS-DZ-Gnk" id="Ysl-FQ-vsb"/>
                         <outlet property="dateButton" destination="RMz-vL-efs" id="9qX-No-GOy"/>
-                        <outlet property="headerLabel" destination="W2h-wC-K6c" id="KM9-4g-g8L"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p2k-fG-Ect" userLabel="First Responder" sceneMemberID="firstResponder"/>
