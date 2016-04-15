@@ -17,8 +17,6 @@ class ConcertTableViewController: UITableViewController {
     }
     
     var objectArray = [Objects]()
-
-    var concerts = Concert.getConcerts()
     
     @IBOutlet weak var cityButton: UIButton!
     @IBOutlet weak var dateButton: UIButton!
@@ -27,14 +25,20 @@ class ConcertTableViewController: UITableViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         // http://stackoverflow.com/questions/31136084/how-can-i-group-tableview-items-from-a-dictionary-in-swift
-        for (key, value) in concerts {
+        
+        let concerts = Concerts()
+        concerts.loadConcerts()
+        
+        print(concerts.getConcerts())
+        
+        for (key, value) in concerts.getConcerts() {
             print("\(key) -> \(value)")
             objectArray.append(Objects(sectionName: key, sectionObjects: value))
         }
-
-        let allConcerts = Array(concerts.values).flatMap{$0}
-        let cities = allConcerts.map{ c in c.city}
-        print(cities)
+//
+//        let allConcerts = Array(concerts.values).flatMap{$0}
+//        let cities = allConcerts.map{ c in c.city}
+//        print(cities)
     }
 
     override func didReceiveMemoryWarning() {
