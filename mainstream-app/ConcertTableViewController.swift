@@ -56,10 +56,11 @@ class ConcertTableViewController: UITableViewController {
                 
                 // convert dict to array
                 for (key, value) in self.concertDict {
-//                    print("\(key) -> \(value)")
-                    let dateString = self.dateFormatter.stringFromDate(NSDate(timeIntervalSince1970: Double(key)!))
-                    self.objectArray.append(Objects(sectionName: dateString, sectionObjects: value))
+                    self.objectArray.append(Objects(sectionName: key, sectionObjects: value))
                 }
+                
+                // sort array after date ascending
+                self.objectArray.sortInPlace({$0.sectionName < $1.sectionName})
                 
                 self.tableView.reloadData()
             }
@@ -94,7 +95,8 @@ class ConcertTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return objectArray[section].sectionName
+        let dateString = self.dateFormatter.stringFromDate(NSDate(timeIntervalSince1970: Double(objectArray[section].sectionName)!))
+        return dateString
     }
 
 
