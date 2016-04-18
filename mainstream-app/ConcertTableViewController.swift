@@ -31,7 +31,8 @@ class ConcertTableViewController: UITableViewController {
         
         dateFormatter.dateFormat = "dd.MM.yyyy"
         
-        Alamofire.request(.GET, "http://localhost:3000").response { request, response, data, error in
+        Alamofire.request(.GET, "https://arcane-hollows-16881.herokuapp.com").response {
+            request, response, data, error in
             if data != nil && error == nil {
                 let json = JSON(data: data!)
                 
