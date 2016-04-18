@@ -12,14 +12,13 @@ import SwiftyJSON
 
 class ConcertTableViewController: UITableViewController {
     
-    struct Objects {
-        
+    struct TableViewObjects {
         var sectionName : String!
         var sectionObjects : [Concert]!
     }
     
     var concertDict = [String: [Concert]]()
-    var objectArray = [Objects]()
+    var concerts = [TableViewObjects]()
     let dateFormatter = NSDateFormatter()
     
     @IBOutlet weak var cityButton: UIButton!
@@ -56,12 +55,13 @@ class ConcertTableViewController: UITableViewController {
                 
                 // convert dict to array
                 for (key, value) in self.concertDict {
-                    self.objectArray.append(Objects(sectionName: key, sectionObjects: value))
+                    self.concerts.append(TableViewObjects(sectionName: key, sectionObjects: value))
                 }
                 
                 // sort array after date ascending
-                self.objectArray.sortInPlace({$0.sectionName < $1.sectionName})
+                self.concerts.sortInPlace({$0.sectionName < $1.sectionName})
                 
+                // reload table view to add data
                 self.tableView.reloadData()
             }
         }
@@ -77,25 +77,28 @@ class ConcertTableViewController: UITableViewController {
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return objectArray.count
+        return concerts.count
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return objectArray[section].sectionObjects.count
+        return concerts[section].sectionObjects.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ConcertTableViewCell") as! ConcertTableViewCell
         
-        cell.artistLabel.text = objectArray[indexPath.section].sectionObjects[indexPath.row].artist
-        cell.venueLabel.text = objectArray[indexPath.section].sectionObjects[indexPath.row].venue
-        cell.cityLabel.text = objectArray[indexPath.section].sectionObjects[indexPath.row].city
+        cell.artistLabel.text = concerts[indexPath.section].sectionObjects[indexPath.row].artist
+        cell.venueLabel.text = concerts[indexPath.section].sectionObjects[indexPath.row].venue
+        cell.cityLabel.text = concerts[indexPath.section].sectionObjects[indexPath.row].city
         
         return cell
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let dateString = self.dateFormatter.stringFromDate(NSDate(timeIntervalSince1970: Double(objectArray[section].sectionName)!))
+        let dateString = self.dateFormatter
+            .stringFromDate(NSDate(timeIntervalSince1970:
+                Double(concerts[section].sectionName)!
+            ))
         return dateString
     }
 
