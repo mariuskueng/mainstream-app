@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class ConcertTableViewController: UITableViewController {
     
@@ -16,7 +18,9 @@ class ConcertTableViewController: UITableViewController {
         var sectionObjects : [Concert]!
     }
     
+    var concertDict = [String: [Concert]]()
     var objectArray = [Objects]()
+    let dateFormatter = NSDateFormatter()
     
     @IBOutlet weak var cityButton: UIButton!
     @IBOutlet weak var dateButton: UIButton!
@@ -26,14 +30,39 @@ class ConcertTableViewController: UITableViewController {
         // Do any additional setup after loading the view, typically from a nib.
         // http://stackoverflow.com/questions/31136084/how-can-i-group-tableview-items-from-a-dictionary-in-swift
         
-        let concerts = Concerts()
-        concerts.loadConcerts()
+        dateFormatter.dateFormat = "dd.MM.yyyy"
         
-        print(concerts.getConcerts())
-        
-        for (key, value) in concerts.getConcerts() {
-            print("\(key) -> \(value)")
-            objectArray.append(Objects(sectionName: key, sectionObjects: value))
+        Alamofire.request(.GET, "http://localhost:3000").response { request, response, data, error in
+            if data != nil && error == nil {
+                let json = JSON(data: data!)
+                
+                // create a dict<date, concerts>
+                for (date, concerts):(String, JSON) in json["concerts"] {
+                    if self.concertDict[date] == nil {
+                        self.concertDict[date] = [Concert]()
+                        
+                        // add concerts to dict
+                        for c in concerts {
+                            self.concertDict[date]?.append(
+                                Concert(
+                                    artist: String(c.1["artist"]),
+                                    venue: String(c.1["venue"]),
+                                    city: String(c.1["city"])
+                                )
+                            )
+                        }
+                    }
+                }
+                
+                // convert dict to array
+                for (key, value) in self.concertDict {
+//                    print("\(key) -> \(value)")
+                    let dateString = self.dateFormatter.stringFromDate(NSDate(timeIntervalSince1970: Double(key)!))
+                    self.objectArray.append(Objects(sectionName: dateString, sectionObjects: value))
+                }
+                
+                self.tableView.reloadData()
+            }
         }
 //
 //        let allConcerts = Array(concerts.values).flatMap{$0}
