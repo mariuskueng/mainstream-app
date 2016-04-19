@@ -51,6 +51,7 @@ class ConcertTableViewController: UITableViewController {
                                 )
                             )
                         }
+                        self.concertDict[date]?.sortInPlace({$0.city < $1.city})
                     }
                 }
                 
