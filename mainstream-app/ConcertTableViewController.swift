@@ -19,6 +19,8 @@ class ConcertTableViewController: UITableViewController {
     
     var concertDict = [String: [Concert]]()
     var concerts = [TableViewObjects]()
+    var cities = []
+    var dates = []
     let dateFormatter = NSDateFormatter()
     
     @IBOutlet weak var cityButton: UIButton!
@@ -65,12 +67,18 @@ class ConcertTableViewController: UITableViewController {
                 
                 // reload table view to add data
                 self.tableView.reloadData()
+                
+                self.prepareFilters()
             }
         }
-//
-//        let allConcerts = Array(concerts.values).flatMap{$0}
-//        let cities = allConcerts.map{ c in c.city}
-//        print(cities)
+
+    }
+    
+    func prepareFilters() {
+        let concerts = Array(self.concertDict.values).flatMap{$0}
+        self.cities = concerts.map{ c in c.city }
+        self.dates = Array(self.concertDict.keys).flatMap{$0}
+    }
     }
 
     override func didReceiveMemoryWarning() {
