@@ -22,6 +22,7 @@ class ConcertTableViewController: UITableViewController {
     var cities = []
     var dates = []
     let dateFormatter = NSDateFormatter()
+    var apiUrl = "https://arcane-hollows-16881.herokuapp.com"
     
     @IBOutlet weak var cityButton: UIButton!
     @IBOutlet weak var dateButton: UIButton!
@@ -32,19 +33,21 @@ class ConcertTableViewController: UITableViewController {
         // http://stackoverflow.com/questions/31136084/how-can-i-group-tableview-items-from-a-dictionary-in-swift
         
         dateFormatter.dateFormat = "dd.MM.yyyy"
+//        apiUrl = "http://localhost:5000/"
         
-        Alamofire.request(.GET, "https://arcane-hollows-16881.herokuapp.com").response {
+        Alamofire.request(.GET, apiUrl).response {
             request, response, data, error in
             if data != nil && error == nil {
                 let json = JSON(data: data!)
                 
                 // create a dict<date, concerts>
-                for (date, concerts):(String, JSON) in json["concerts"] {
+                for (concerts):(String, JSON) in json["concerts"] {
+                    let date = String(concerts.1["_id"])
                     if self.concertDict[date] == nil {
                         self.concertDict[date] = [Concert]()
                         
                         // add concerts to dict
-                        for c in concerts {
+                        for c in concerts.1["concerts"] {
                             self.concertDict[date]?.append(
                                 Concert(
                                     artist: String(c.1["artist"]),
