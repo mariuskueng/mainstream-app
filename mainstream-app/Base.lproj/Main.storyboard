@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="6ci-0o-MC0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="6ci-0o-MC0">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -44,23 +44,6 @@
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="headTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RMz-vL-efs">
-                                    <rect key="frame" x="-1" y="32" width="188" height="77"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="187" id="Pj7-vR-bAj"/>
-                                        <constraint firstAttribute="width" constant="120" id="TGV-p6-ygT"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="11"/>
-                                    <state key="normal" title="Datum" image="ios7-calendar-outline">
-                                        <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                                    </state>
-                                    <variation key="default">
-                                        <mask key="constraints">
-                                            <exclude reference="Pj7-vR-bAj"/>
-                                            <exclude reference="TGV-p6-ygT"/>
-                                        </mask>
-                                    </variation>
-                                </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mzS-DZ-Gnk">
                                     <rect key="frame" x="187" y="32" width="188" height="77"/>
                                     <constraints>
@@ -80,62 +63,54 @@
                                         </mask>
                                     </variation>
                                 </button>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tt1-sC-9xo">
+                                    <rect key="frame" x="-1" y="32" width="188" height="77"/>
+                                    <subviews>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UYm-Iw-Ayr">
+                                            <rect key="frame" x="45" y="31" width="97" height="30"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <action selector="textFieldEditing:" destination="Gh9-yo-PbQ" eventType="editingDidBegin" id="oHf-sn-LUx"/>
+                                            </connections>
+                                        </textField>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Datum" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vNv-Ha-U8R">
+                                            <rect key="frame" x="45" y="8" width="51" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                                </view>
                             </subviews>
                             <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
-                                <constraint firstItem="RMz-vL-efs" firstAttribute="width" secondItem="mzS-DZ-Gnk" secondAttribute="width" id="0CX-Oc-Zei"/>
-                                <constraint firstItem="mzS-DZ-Gnk" firstAttribute="leading" secondItem="RMz-vL-efs" secondAttribute="trailing" id="15a-xB-aMT"/>
                                 <constraint firstItem="mzS-DZ-Gnk" firstAttribute="top" secondItem="EmO-ub-pPW" secondAttribute="top" constant="32" id="3GQ-yT-HBT"/>
-                                <constraint firstItem="RMz-vL-efs" firstAttribute="leading" secondItem="EmO-ub-pPW" secondAttribute="leading" constant="-1" id="403-LY-vMi"/>
-                                <constraint firstAttribute="trailing" secondItem="RMz-vL-efs" secondAttribute="trailing" constant="188" id="4e1-uQ-AFI"/>
-                                <constraint firstItem="mzS-DZ-Gnk" firstAttribute="top" secondItem="RMz-vL-efs" secondAttribute="top" id="6mB-CB-70m"/>
-                                <constraint firstItem="RMz-vL-efs" firstAttribute="width" secondItem="mzS-DZ-Gnk" secondAttribute="width" id="Beq-Wq-92H"/>
+                                <constraint firstItem="mzS-DZ-Gnk" firstAttribute="leading" secondItem="tt1-sC-9xo" secondAttribute="trailing" id="AmC-VM-5bD"/>
                                 <constraint firstAttribute="trailing" secondItem="mzS-DZ-Gnk" secondAttribute="trailing" id="Cni-iu-N16"/>
-                                <constraint firstItem="mzS-DZ-Gnk" firstAttribute="width" secondItem="RMz-vL-efs" secondAttribute="width" id="FmS-X2-ay1"/>
-                                <constraint firstItem="RMz-vL-efs" firstAttribute="width" secondItem="mzS-DZ-Gnk" secondAttribute="width" id="GzG-Jc-v7X"/>
                                 <constraint firstAttribute="bottom" secondItem="W2h-wC-K6c" secondAttribute="bottom" constant="79" id="KRa-Bm-miF"/>
-                                <constraint firstItem="RMz-vL-efs" firstAttribute="leading" secondItem="EmO-ub-pPW" secondAttribute="leading" id="LM2-gU-lWu"/>
-                                <constraint firstItem="mzS-DZ-Gnk" firstAttribute="leading" secondItem="RMz-vL-efs" secondAttribute="trailing" id="O18-0f-0mQ"/>
-                                <constraint firstItem="RMz-vL-efs" firstAttribute="top" secondItem="W2h-wC-K6c" secondAttribute="bottom" constant="2" id="OfT-tc-5oD"/>
                                 <constraint firstAttribute="trailing" secondItem="mzS-DZ-Gnk" secondAttribute="trailing" id="QKL-R8-gXp"/>
-                                <constraint firstItem="RMz-vL-efs" firstAttribute="width" secondItem="mzS-DZ-Gnk" secondAttribute="width" id="See-aY-kV1"/>
                                 <constraint firstItem="W2h-wC-K6c" firstAttribute="leading" secondItem="EmO-ub-pPW" secondAttribute="leading" constant="18" id="VUx-xw-a9B"/>
-                                <constraint firstItem="mzS-DZ-Gnk" firstAttribute="leading" secondItem="RMz-vL-efs" secondAttribute="trailing" id="XHY-of-rJ8"/>
-                                <constraint firstItem="RMz-vL-efs" firstAttribute="leading" secondItem="EmO-ub-pPW" secondAttribute="leading" id="dad-mo-WvR"/>
+                                <constraint firstItem="tt1-sC-9xo" firstAttribute="top" secondItem="mzS-DZ-Gnk" secondAttribute="top" id="dCB-hq-hte"/>
+                                <constraint firstAttribute="trailing" secondItem="tt1-sC-9xo" secondAttribute="trailing" constant="188" id="fea-ov-fC6"/>
                                 <constraint firstItem="W2h-wC-K6c" firstAttribute="top" secondItem="EmO-ub-pPW" secondAttribute="top" id="fyY-7z-woO"/>
-                                <constraint firstItem="mzS-DZ-Gnk" firstAttribute="firstBaseline" secondItem="RMz-vL-efs" secondAttribute="baseline" id="kD3-2V-uqT"/>
                                 <constraint firstAttribute="bottom" secondItem="mzS-DZ-Gnk" secondAttribute="bottom" id="l2r-7P-jea"/>
-                                <constraint firstItem="RMz-vL-efs" firstAttribute="leading" secondItem="EmO-ub-pPW" secondAttribute="leading" id="mkQ-lc-65h"/>
-                                <constraint firstAttribute="bottom" secondItem="RMz-vL-efs" secondAttribute="bottom" id="n4G-AU-uOw"/>
                                 <constraint firstItem="mzS-DZ-Gnk" firstAttribute="top" secondItem="EmO-ub-pPW" secondAttribute="top" constant="32" id="nsE-7v-Utd"/>
+                                <constraint firstItem="tt1-sC-9xo" firstAttribute="leading" secondItem="EmO-ub-pPW" secondAttribute="leading" constant="-1" id="ois-TN-m1w"/>
                                 <constraint firstAttribute="trailing" secondItem="mzS-DZ-Gnk" secondAttribute="trailing" id="pLi-md-bPt"/>
+                                <constraint firstItem="tt1-sC-9xo" firstAttribute="bottom" secondItem="mzS-DZ-Gnk" secondAttribute="bottom" id="pcJ-TM-xAQ"/>
                                 <constraint firstItem="mzS-DZ-Gnk" firstAttribute="leading" secondItem="EmO-ub-pPW" secondAttribute="leading" constant="186" id="qMz-kb-QuK"/>
-                                <constraint firstAttribute="bottom" secondItem="RMz-vL-efs" secondAttribute="bottom" id="qpo-vk-dQ1"/>
                                 <constraint firstAttribute="trailing" secondItem="mzS-DZ-Gnk" secondAttribute="trailing" id="rb5-c5-HpW"/>
                                 <constraint firstAttribute="trailing" secondItem="mzS-DZ-Gnk" secondAttribute="trailing" id="s1p-4S-Ppf"/>
-                                <constraint firstItem="mzS-DZ-Gnk" firstAttribute="baseline" secondItem="RMz-vL-efs" secondAttribute="firstBaseline" id="tVI-KI-1bY"/>
-                                <constraint firstItem="RMz-vL-efs" firstAttribute="leading" secondItem="EmO-ub-pPW" secondAttribute="leading" id="w9S-cd-IMd"/>
-                                <constraint firstItem="mzS-DZ-Gnk" firstAttribute="leading" secondItem="RMz-vL-efs" secondAttribute="trailing" id="wRE-Qi-kpg"/>
                             </constraints>
                             <variation key="default">
                                 <mask key="constraints">
-                                    <exclude reference="0CX-Oc-Zei"/>
-                                    <exclude reference="4e1-uQ-AFI"/>
-                                    <exclude reference="Beq-Wq-92H"/>
-                                    <exclude reference="GzG-Jc-v7X"/>
-                                    <exclude reference="LM2-gU-lWu"/>
-                                    <exclude reference="dad-mo-WvR"/>
-                                    <exclude reference="mkQ-lc-65h"/>
-                                    <exclude reference="w9S-cd-IMd"/>
-                                    <exclude reference="15a-xB-aMT"/>
                                     <exclude reference="Cni-iu-N16"/>
-                                    <exclude reference="FmS-X2-ay1"/>
-                                    <exclude reference="O18-0f-0mQ"/>
                                     <exclude reference="QKL-R8-gXp"/>
                                     <exclude reference="pLi-md-bPt"/>
                                     <exclude reference="qMz-kb-QuK"/>
                                     <exclude reference="rb5-c5-HpW"/>
-                                    <exclude reference="wRE-Qi-kpg"/>
                                 </mask>
                             </variation>
                         </view>
@@ -197,7 +172,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="cityButton" destination="mzS-DZ-Gnk" id="Ysl-FQ-vsb"/>
-                        <outlet property="dateButton" destination="RMz-vL-efs" id="9qX-No-GOy"/>
+                        <outlet property="dateTextField" destination="UYm-Iw-Ayr" id="98i-vp-TJ5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p2k-fG-Ect" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -206,7 +181,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ios7-calendar-outline" width="38" height="38"/>
         <image name="ios7-home-outline" width="38" height="38"/>
     </resources>
 </document>
