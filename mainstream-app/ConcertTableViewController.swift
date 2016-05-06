@@ -23,6 +23,7 @@ class ConcertTableViewController: UITableViewController {
     var cities = []
     var dates = []
     let dateFormatter = NSDateFormatter()
+    let displayDate = NSDateFormatter()
     var apiUrl = "https://arcane-hollows-16881.herokuapp.com"
     var selectedDate = NSDate()
     
@@ -34,7 +35,8 @@ class ConcertTableViewController: UITableViewController {
         // Do any additional setup after loading the view, typically from a nib.
         // http://stackoverflow.com/questions/31136084/how-can-i-group-tableview-items-from-a-dictionary-in-swift
         
-        dateFormatter.dateFormat = "dd.MM.yyyy"
+        displayDate.dateFormat = "dd.MM.yyyy"
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
 //        apiUrl = "http://localhost:5000/"
         
         Alamofire.request(.GET, apiUrl).response {
@@ -160,10 +162,9 @@ class ConcertTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let dateString = self.dateFormatter
-            .stringFromDate(NSDate(timeIntervalSince1970:
-                Double(concerts[section].sectionName)!
-            ))
+        let date = self.dateFormatter.dateFromString(concerts[section].date!)
+        let dateString = self.displayDate
+            .stringFromDate(date!)
         return dateString
     }
 
