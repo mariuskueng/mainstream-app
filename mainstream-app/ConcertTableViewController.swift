@@ -13,19 +13,17 @@ import SwiftyJSON
 class ConcertTableViewController: UITableViewController {
     
     struct TableViewObjects {
-        var sectionName : String!
-        var sectionObjects : [Concert]!
+        var date : String
+        var concerts : [Concert]
     }
     
-    var concertDict = [String: [Concert]]()
-    var concertsStorage = [TableViewObjects]()
     var concerts = [TableViewObjects]()
-    var cities = []
-    var dates = []
+    var concertDict = [String: [Concert]]()
+    var selectedDate = NSDate()
+    
     let dateFormatter = NSDateFormatter()
     let displayDate = NSDateFormatter()
     var apiUrl = "https://arcane-hollows-16881.herokuapp.com"
-    var selectedDate = NSDate()
     
     @IBOutlet weak var cityButton: UIButton!
     @IBOutlet weak var dateTextField: UITextField!
@@ -64,29 +62,31 @@ class ConcertTableViewController: UITableViewController {
                     }
                 }
                 
-                // convert dict to array
-                for (key, value) in self.concertDict {
-                    self.concertsStorage.append(TableViewObjects(sectionName: key, sectionObjects: value))
-                }
+                self.getTableViewObjects(self.concertDict)
                 
                 // sort array after date ascending
-                self.concertsStorage.sortInPlace({$0.sectionName < $1.sectionName})
-                
-                self.concerts = self.concertsStorage
+                self.concerts.sortInPlace({$0.date < $1.date})
                 
                 // reload table view to add data
                 self.tableView.reloadData()
                 
-                self.prepareFilters()
+//                self.prepareFilters()
             }
         }
 
     }
     
-    func prepareFilters() {
-        let concerts = Array(self.concertDict.values).flatMap{$0}
-        self.cities = concerts.map{ c in c.city }
-        self.dates = Array(self.concertDict.keys).flatMap{$0}
+//    func prepareFilters() {
+//        let concerts = Array(self.concertDict.values).flatMap{$0}
+//        self.cities = concerts.map{ c in c.city }
+//        self.dates = Array(self.concertDict.keys).flatMap{$0}
+//    }
+    
+    func getTableViewObjects(dict: [String: [Concert]]) {
+        // convert dict to array
+        for (key, value) in dict {
+            self.concerts.append(TableViewObjects(date: key, concerts: value))
+        }
     }
     
     @IBAction func textFieldEditing(sender: UITextField) {
@@ -98,8 +98,8 @@ class ConcertTableViewController: UITableViewController {
         inputView.addSubview(datePickerView) // add date picker to UIView
         
         let doneButton = UIButton(frame: CGRectMake((self.view.frame.size.width - 100), 0, 100, 50))
-        doneButton.setTitle("Done", forState: UIControlState.Normal)
-        doneButton.setTitle("Done", forState: UIControlState.Highlighted)
+        doneButton.setTitle("Fertig", forState: UIControlState.Normal)
+        doneButton.setTitle("Fertig", forState: UIControlState.Highlighted)
         doneButton.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
         doneButton.setTitleColor(UIColor.grayColor(), forState: UIControlState.Highlighted)
         
@@ -114,7 +114,7 @@ class ConcertTableViewController: UITableViewController {
     }
     
     func datePickerValueChanged(sender: UIDatePicker) {
-        self.dateTextField.text = getFormattedDate(sender.date)
+        self.dateTextField.text = getFormattedDate(self.displayDate, date: sender.date)
         print("Date picker value changed")
         self.selectedDate = sender.date
     }
@@ -122,20 +122,21 @@ class ConcertTableViewController: UITableViewController {
     func doneButtonClicked(sender:UIButton)
     {
         print("Done button clicked")
-//        filterByDate()
-        self.dateTextField.text = getFormattedDate(self.selectedDate)
+        filterByDate()
+        self.dateTextField.text = getFormattedDate(self.displayDate, date: self.selectedDate)
         self.dateTextField.resignFirstResponder() // To resign the inputView on clicking done.
     }
     
-    func getFormattedDate(date: NSDate) -> String {
-        return self.dateFormatter.stringFromDate(date)
+    func getFormattedDate(formatter: NSDateFormatter, date: NSDate) -> String {
+        return formatter.stringFromDate(date)
     }
     
     func filterByDate() {
-        self.concerts = self.concerts.filter{$0.sectionName == getFormattedDate(self.selectedDate)}
-        
-        
-        self.tableView.reloadData()
+//        let date = getFormattedDate(self.selectedDate)
+//        let filteredConcerts = [date: self.concertDict[date]?]
+//        self.concerts = getTableViewObjects(filteredConcerts)
+//        
+//        self.tableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -148,21 +149,21 @@ class ConcertTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return concerts[section].sectionObjects.count
+        return concerts[section].concerts.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ConcertTableViewCell") as! ConcertTableViewCell
         
-        cell.artistLabel.text = concerts[indexPath.section].sectionObjects[indexPath.row].artist
-        cell.venueLabel.text = concerts[indexPath.section].sectionObjects[indexPath.row].venue
-        cell.cityLabel.text = concerts[indexPath.section].sectionObjects[indexPath.row].city
+        cell.artistLabel.text = concerts[indexPath.section].concerts[indexPath.row].artist
+        cell.venueLabel.text = concerts[indexPath.section].concerts[indexPath.row].venue
+        cell.cityLabel.text = concerts[indexPath.section].concerts[indexPath.row].city
         
         return cell
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let date = self.dateFormatter.dateFromString(concerts[section].date!)
+        let date = self.dateFormatter.dateFromString(concerts[section].date)
         let dateString = self.displayDate
             .stringFromDate(date!)
         return dateString
