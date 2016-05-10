@@ -138,8 +138,10 @@ class ConcertTableViewController: UITableViewController {
     func filterByDate() {
         let date = getFormattedDate(self.displayDate, date: self.selectedDate)
         let filteredConcerts = [date: self.concertDict[date]]
+        if ((filteredConcerts.values.first!?.count) != nil) {
+            updateTableView(getTableViewObjects(filteredConcerts))
+        }
         
-        updateTableView(getTableViewObjects(filteredConcerts))
     }
     
     func getTableViewObjects(dict: [String: [Concert]?]) -> [TableViewObjects] {
