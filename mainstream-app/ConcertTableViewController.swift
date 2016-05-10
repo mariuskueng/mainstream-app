@@ -87,7 +87,7 @@ class ConcertTableViewController: UITableViewController {
         let doneButton = UIButton(frame: CGRectMake((self.view.frame.size.width - 100), 0, 100, 50))
         doneButton.setTitle("Done", forState: UIControlState.Normal)
         doneButton.setTitle("Done", forState: UIControlState.Highlighted)
-        doneButton.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
+        doneButton.setTitleColor(UIColor(red: 27/255, green: 66/255, blue: 255/255, alpha: 1.0) /* #1b42ff */, forState: UIControlState.Normal)
         doneButton.setTitleColor(UIColor.grayColor(), forState: UIControlState.Highlighted)
         
         let resetButton = UIButton(frame: CGRectMake(20, 0, 100, 50))
