@@ -125,11 +125,12 @@ class ConcertTableViewController: UITableViewController {
     }
     
     func filterByDate() {
-//        let date = getFormattedDate(self.selectedDate)
-//        let filteredConcerts = [date: self.concertDict[date]?]
-//        self.concerts = getTableViewObjects(filteredConcerts)
-//        
-//        self.tableView.reloadData()
+        let date = getFormattedDate(self.displayDate, date: self.selectedDate)
+        let filteredConcerts = [date: self.concertDict[date]]
+        self.concerts = getTableViewObjects(filteredConcerts)
+        self.tableView.reloadData()
+    }
+    
     func getTableViewObjects(dict: [String: [Concert]?]) -> [TableViewObjects] {
         // convert dict to array
         var concerts = [TableViewObjects]()
