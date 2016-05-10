@@ -62,13 +62,7 @@ class ConcertTableViewController: UITableViewController {
                     }
                 }
                 
-                self.concerts = self.getTableViewObjects(self.concertDict)
-                
-                // sort array after date ascending
-                self.concerts.sortInPlace({self.displayDate.dateFromString($0.date)?.compare(self.displayDate.dateFromString($1.date)!) == NSComparisonResult.OrderedAscending})
-                
-                // reload table view to add data
-                self.tableView.reloadData()
+                self.updateTableView(self.getTableViewObjects(self.concertDict))
                 
 //                self.prepareFilters()
             }
@@ -127,8 +121,8 @@ class ConcertTableViewController: UITableViewController {
     func filterByDate() {
         let date = getFormattedDate(self.displayDate, date: self.selectedDate)
         let filteredConcerts = [date: self.concertDict[date]]
-        self.concerts = getTableViewObjects(filteredConcerts)
-        self.tableView.reloadData()
+        
+        updateTableView(getTableViewObjects(filteredConcerts))
     }
     
     func getTableViewObjects(dict: [String: [Concert]?]) -> [TableViewObjects] {
@@ -138,6 +132,16 @@ class ConcertTableViewController: UITableViewController {
             concerts.append(TableViewObjects(date: key, concerts: value!))
         }
         return concerts
+    }
+    
+    func updateTableView(concerts: [TableViewObjects]) {
+        self.concerts = concerts
+        
+        // sort array after date ascending
+        self.concerts.sortInPlace({self.displayDate.dateFromString($0.date)?.compare(self.displayDate.dateFromString($1.date)!) == NSComparisonResult.OrderedAscending})
+        
+        // reload table view to add data
+        self.tableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
