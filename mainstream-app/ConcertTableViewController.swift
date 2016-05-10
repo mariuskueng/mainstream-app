@@ -62,7 +62,7 @@ class ConcertTableViewController: UITableViewController {
                     }
                 }
                 
-                self.getTableViewObjects(self.concertDict)
+                self.concerts = self.getTableViewObjects(self.concertDict)
                 
                 // sort array after date ascending
                 self.concerts.sortInPlace({$0.date < $1.date})
@@ -81,13 +81,6 @@ class ConcertTableViewController: UITableViewController {
 //        self.cities = concerts.map{ c in c.city }
 //        self.dates = Array(self.concertDict.keys).flatMap{$0}
 //    }
-    
-    func getTableViewObjects(dict: [String: [Concert]]) {
-        // convert dict to array
-        for (key, value) in dict {
-            self.concerts.append(TableViewObjects(date: key, concerts: value))
-        }
-    }
     
     @IBAction func textFieldEditing(sender: UITextField) {
         //Create the view
@@ -137,6 +130,13 @@ class ConcertTableViewController: UITableViewController {
 //        self.concerts = getTableViewObjects(filteredConcerts)
 //        
 //        self.tableView.reloadData()
+    func getTableViewObjects(dict: [String: [Concert]?]) -> [TableViewObjects] {
+        // convert dict to array
+        var concerts = [TableViewObjects]()
+        for (key, value) in dict {
+            concerts.append(TableViewObjects(date: key, concerts: value!))
+        }
+        return concerts
     }
     
     override func didReceiveMemoryWarning() {
