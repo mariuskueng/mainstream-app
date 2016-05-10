@@ -90,9 +90,18 @@ class ConcertTableViewController: UITableViewController {
         doneButton.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
         doneButton.setTitleColor(UIColor.grayColor(), forState: UIControlState.Highlighted)
         
+        let resetButton = UIButton(frame: CGRectMake(20, 0, 100, 50))
+        resetButton.setTitle("Reset filter", forState: UIControlState.Normal)
+        resetButton.setTitle("Reset filter", forState: UIControlState.Highlighted)
+        resetButton.setTitleColor(UIColor(red: 27/255, green: 66/255, blue: 255/255, alpha: 1.0) /* #1b42ff */, forState: UIControlState.Normal)
+        resetButton.setTitleColor(UIColor.grayColor(), forState: UIControlState.Highlighted)
+        
         inputView.addSubview(doneButton) // add Button to UIView
+        inputView.addSubview(resetButton) // add Button to UIView
         
         doneButton.addTarget(self, action: #selector(ConcertTableViewController.doneButtonClicked), forControlEvents: UIControlEvents.TouchUpInside) // set button click event
+        
+        resetButton.addTarget(self, action: #selector(ConcertTableViewController.resetButtonClicked), forControlEvents: UIControlEvents.TouchUpInside) // set button click event
         
         sender.inputView = inputView
         datePickerView.addTarget(self, action: #selector(ConcertTableViewController.datePickerValueChanged), forControlEvents: UIControlEvents.ValueChanged)
@@ -111,6 +120,14 @@ class ConcertTableViewController: UITableViewController {
         print("Done button clicked")
         filterByDate()
         self.dateTextField.text = getFormattedDate(self.displayDate, date: self.selectedDate)
+        self.dateTextField.resignFirstResponder() // To resign the inputView on clicking done.
+    }
+    
+    func resetButtonClicked(sender: UIButton)
+    {
+        print("Reset button clicked")
+        updateTableView(getTableViewObjects(self.concertDict))
+        self.dateTextField.text = ""
         self.dateTextField.resignFirstResponder() // To resign the inputView on clicking done.
     }
     
