@@ -44,7 +44,7 @@ class ConcertTableViewController: UITableViewController {
                 
                 // create a dict<date, concerts>
                 for (concerts):(String, JSON) in json["concerts"] {
-                    let date = String(concerts.1["_id"])
+                    let date = self.getFormattedDate(self.displayDate, date: self.dateFormatter.dateFromString(String(concerts.1["_id"]))!)
                     if self.concertDict[date] == nil {
                         self.concertDict[date] = [Concert]()
                         
@@ -65,7 +65,7 @@ class ConcertTableViewController: UITableViewController {
                 self.concerts = self.getTableViewObjects(self.concertDict)
                 
                 // sort array after date ascending
-                self.concerts.sortInPlace({$0.date < $1.date})
+                self.concerts.sortInPlace({self.displayDate.dateFromString($0.date)?.compare(self.displayDate.dateFromString($1.date)!) == NSComparisonResult.OrderedAscending})
                 
                 // reload table view to add data
                 self.tableView.reloadData()
@@ -163,10 +163,7 @@ class ConcertTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let date = self.dateFormatter.dateFromString(concerts[section].date)
-        let dateString = self.displayDate
-            .stringFromDate(date!)
-        return dateString
+        return concerts[section].date
     }
 
 
