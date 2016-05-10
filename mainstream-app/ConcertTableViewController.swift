@@ -85,8 +85,8 @@ class ConcertTableViewController: UITableViewController {
         inputView.addSubview(datePickerView) // add date picker to UIView
         
         let doneButton = UIButton(frame: CGRectMake((self.view.frame.size.width - 100), 0, 100, 50))
-        doneButton.setTitle("Fertig", forState: UIControlState.Normal)
-        doneButton.setTitle("Fertig", forState: UIControlState.Highlighted)
+        doneButton.setTitle("Done", forState: UIControlState.Normal)
+        doneButton.setTitle("Done", forState: UIControlState.Highlighted)
         doneButton.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
         doneButton.setTitleColor(UIColor.grayColor(), forState: UIControlState.Highlighted)
         
@@ -106,7 +106,7 @@ class ConcertTableViewController: UITableViewController {
         self.selectedDate = sender.date
     }
     
-    func doneButtonClicked(sender:UIButton)
+    func doneButtonClicked(sender: UIButton)
     {
         print("Done button clicked")
         filterByDate()
