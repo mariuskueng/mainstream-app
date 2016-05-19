@@ -62,6 +62,9 @@
                                             <exclude reference="jYK-j8-1AF"/>
                                         </mask>
                                     </variation>
+                                    <connections>
+                                        <segue destination="kUQ-b1-Nis" kind="show" id="pMp-pZ-U6R"/>
+                                    </connections>
                                 </button>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tt1-sC-9xo">
                                     <rect key="frame" x="-1" y="32" width="188" height="77"/>
@@ -168,18 +171,7 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Konzerte" id="aF4-Db-mgD">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="vdo-6u-iAL">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fd2-xg-WAQ">
-                                <rect key="frame" x="276" y="7" width="83" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Filter"/>
-                                <connections>
-                                    <segue destination="kUQ-b1-Nis" kind="show" id="bmh-I5-JXZ"/>
-                                </connections>
-                            </button>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Konzerte" id="aF4-Db-mgD"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="cityButton" destination="mzS-DZ-Gnk" id="Ysl-FQ-vsb"/>
