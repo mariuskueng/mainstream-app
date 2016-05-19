@@ -19,6 +19,7 @@ class ConcertTableViewController: UITableViewController {
     
     var concerts = [TableViewObjects]()
     var concertDict = [String: [Concert]]()
+    var cities = [String]()
     var selectedDate = NSDate()
     
     let dateFormatter = NSDateFormatter()
@@ -64,17 +65,16 @@ class ConcertTableViewController: UITableViewController {
                 
                 self.updateTableView(self.getTableViewObjects(self.concertDict))
                 
-//                self.prepareFilters()
+                self.prepareFilters()
             }
         }
 
     }
     
-//    func prepareFilters() {
-//        let concerts = Array(self.concertDict.values).flatMap{$0}
-//        self.cities = concerts.map{ c in c.city }
-//        self.dates = Array(self.concertDict.keys).flatMap{$0}
-//    }
+    func prepareFilters() {
+        let concerts = Array(self.concertDict.values).flatMap{$0}
+        self.cities = Array(Set(concerts.map{ c in c.city })).sort(<)
+    }
     
     @IBAction func textFieldEditing(sender: UITextField) {
         //Create the view
@@ -189,7 +189,14 @@ class ConcertTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return concerts[section].date
     }
-
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        // Create a new variable to store the instance of current controller
+        let destination = segue.destinationViewController as! UINavigationController
+        let cityFilterViewController = destination.topViewController as! CityFilterView
+        // send data to controller
+        cityFilterViewController.cities = self.cities
+    }
 
 }
 

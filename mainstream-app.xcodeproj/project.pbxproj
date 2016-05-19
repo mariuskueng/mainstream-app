@@ -10,6 +10,7 @@
 		B0C8A56FCA25C5F20FA3C249 /* Pods_mainstream_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5460D84F502B3A4BB3D86629 /* Pods_mainstream_app.framework */; };
 		B67C70331CA3FB9700807285 /* Concert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67C70321CA3FB9700807285 /* Concert.swift */; };
 		B67C70351CA40F0B00807285 /* ConcertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67C70341CA40F0B00807285 /* ConcertTableViewCell.swift */; };
+		B6C8AFC51CEDD49700350B88 /* CityFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C8AFC41CEDD49700350B88 /* CityFilterView.swift */; };
 		B6E604E51CA3EB310088561D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E604E41CA3EB310088561D /* AppDelegate.swift */; };
 		B6E604E71CA3EB310088561D /* ConcertTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E604E61CA3EB310088561D /* ConcertTableViewController.swift */; };
 		B6E604EA1CA3EB310088561D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6E604E81CA3EB310088561D /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 		5460D84F502B3A4BB3D86629 /* Pods_mainstream_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mainstream_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B67C70321CA3FB9700807285 /* Concert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Concert.swift; sourceTree = "<group>"; };
 		B67C70341CA40F0B00807285 /* ConcertTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcertTableViewCell.swift; sourceTree = "<group>"; };
+		B6C8AFC41CEDD49700350B88 /* CityFilterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityFilterView.swift; sourceTree = "<group>"; };
 		B6E604E11CA3EB300088561D /* mainstream-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mainstream-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6E604E41CA3EB310088561D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6E604E61CA3EB310088561D /* ConcertTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcertTableViewController.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 				B6E604EB1CA3EB310088561D /* mainstream_app.xcdatamodeld */,
 				B67C70321CA3FB9700807285 /* Concert.swift */,
 				B67C70341CA40F0B00807285 /* ConcertTableViewCell.swift */,
+				B6C8AFC41CEDD49700350B88 /* CityFilterView.swift */,
 			);
 			path = "mainstream-app";
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 				B6E604E71CA3EB310088561D /* ConcertTableViewController.swift in Sources */,
 				B6E604E51CA3EB310088561D /* AppDelegate.swift in Sources */,
 				B67C70331CA3FB9700807285 /* Concert.swift in Sources */,
+				B6C8AFC51CEDD49700350B88 /* CityFilterView.swift in Sources */,
 				B67C70351CA40F0B00807285 /* ConcertTableViewCell.swift in Sources */,
 				B6E604ED1CA3EB310088561D /* mainstream_app.xcdatamodeld in Sources */,
 			);
