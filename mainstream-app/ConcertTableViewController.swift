@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import SwiftDate
 
 class ConcertTableViewController: UITableViewController {
     
@@ -36,7 +37,10 @@ class ConcertTableViewController: UITableViewController {
         
         displayDate.dateFormat = "dd.MM.yyyy"
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-//        apiUrl = "http://localhost:5000/"
+        dateFormatter.timeZone = NSTimeZone(abbreviation: "Europe/Zurich")
+        displayDate.timeZone = NSTimeZone(abbreviation: "Europe/Zurich")
+            
+//        apiUrl = "http://localhost:3000/"
         
         Alamofire.request(.GET, apiUrl).response {
             request, response, data, error in
@@ -45,13 +49,15 @@ class ConcertTableViewController: UITableViewController {
                 
                 // create a dict<date, concerts>
                 for (concerts):(String, JSON) in json["concerts"] {
-                    let date = self.getFormattedDate(self.displayDate, date: self.dateFormatter.dateFromString(String(concerts.1["_id"]))!)
-                    if self.concertDict[date] == nil {
-                        self.concertDict[date] = [Concert]()
+                    let date = String(concerts.1["_id"]).toDate(DateFormat.ISO8601)
+                    let formattedDate = date!.toString(DateFormat.Custom("dd.MM.yyyy"))
+                
+                    if self.concertDict[formattedDate!] == nil {
+                        self.concertDict[formattedDate!] = [Concert]()
                         
                         // add concerts to dict
                         for c in concerts.1["concerts"] {
-                            self.concertDict[date]?.append(
+                            self.concertDict[formattedDate!]?.append(
                                 Concert(
                                     artist: String(c.1["artist"]),
                                     venue: String(c.1["venue"]),
@@ -59,7 +65,7 @@ class ConcertTableViewController: UITableViewController {
                                 )
                             )
                         }
-                        self.concertDict[date]?.sortInPlace({$0.city < $1.city})
+                        self.concertDict[formattedDate!]?.sortInPlace({$0.city < $1.city})
                     }
                 }
                 
@@ -132,6 +138,7 @@ class ConcertTableViewController: UITableViewController {
     }
     
     func getFormattedDate(formatter: NSDateFormatter, date: NSDate) -> String {
+        formatter.timeZone = NSTimeZone(abbreviation: "Europe/Zurich")
         return formatter.stringFromDate(date)
     }
     
