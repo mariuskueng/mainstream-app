@@ -197,6 +197,11 @@ class ConcertTableViewController: UITableViewController {
         // send data to controller
         cityFilterViewController.cities = self.cities
     }
+    
+    @IBAction func cancelToConcertTableViewController(segue: UIStoryboardSegue)
+    {
+        
+    }
 
 }
 
