@@ -51,10 +51,17 @@ class CityFilterView: UITableViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-//        set destination view
+        // set destination view
         let destination = segue.destinationViewController as! ConcertTableViewController
-        let cell = sender as! UITableViewCell
-//        set filter variable in destination view
-        destination.filterCity = (cell.textLabel?.text)!
+        
+        // If sender was nav button
+        if (sender is UIBarButtonItem) {
+            destination.filterCity = "Alle"
+        }
+        else {
+            let cell = sender as! UITableViewCell
+            // set filter variable in destination view
+            destination.filterCity = (cell.textLabel?.text)!
+        }
     }
 }

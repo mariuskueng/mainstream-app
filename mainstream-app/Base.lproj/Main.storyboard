@@ -208,7 +208,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="2fY-2C-gji" kind="unwind" unwindAction="filterCity:" id="biP-DX-vc4"/>
+                                    <segue destination="2fY-2C-gji" kind="unwind" unwindAction="filterCity:" id="LpX-aQ-ILh"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -221,6 +221,11 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="EhC-fO-IFr">
                             <connections>
                                 <action selector="cancel:" destination="9b2-iQ-VXP" id="geK-Z3-M1Y"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Alle Städte" id="9Ty-P6-V0a">
+                            <connections>
+                                <segue destination="2fY-2C-gji" kind="unwind" unwindAction="filterCity:" id="Kjf-Fz-u3o"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -238,6 +243,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dTk-Xj-1XA">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.7725490196" green="0.69803921570000005" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
