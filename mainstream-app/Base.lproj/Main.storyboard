@@ -179,7 +179,6 @@
                     <connections>
                         <outlet property="cityButton" destination="mzS-DZ-Gnk" id="Ysl-FQ-vsb"/>
                         <outlet property="dateButton" destination="Z3F-hg-pHE" id="gVP-Lz-xLV"/>
-                        <outlet property="dateFilterButton" destination="Z3F-hg-pHE" id="xX2-xa-8fL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p2k-fG-Ect" userLabel="First Responder" sceneMemberID="firstResponder"/>

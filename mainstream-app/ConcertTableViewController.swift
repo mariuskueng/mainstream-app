@@ -23,9 +23,8 @@ class ConcertTableViewController: UITableViewController {
     var cities = [String]()
     var selectedDate = NSDate()
     var filterCity = ""
+    let displayDateFormat = DateFormat.Custom("dd.MM.YYYY")
     
-    let dateFormatter = NSDateFormatter()
-    let displayDate = NSDateFormatter()
     var apiUrl = "https://arcane-hollows-16881.herokuapp.com"
     
     @IBOutlet weak var cityButton: UIButton!
@@ -35,11 +34,6 @@ class ConcertTableViewController: UITableViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         // http://stackoverflow.com/questions/31136084/how-can-i-group-tableview-items-from-a-dictionary-in-swift
-        
-        displayDate.dateFormat = "dd.MM.yyyy"
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        dateFormatter.timeZone = NSTimeZone(abbreviation: "Europe/Zurich")
-        displayDate.timeZone = NSTimeZone(abbreviation: "Europe/Zurich")
             
         apiUrl = "http://localhost:3000/"
         
@@ -51,7 +45,7 @@ class ConcertTableViewController: UITableViewController {
                 // create a dict<date, concerts>
                 for (concerts):(String, JSON) in json["concerts"] {
                     let date = String(concerts.1["_id"]).toDate(DateFormat.ISO8601)
-                    let formattedDate = date!.toString(DateFormat.Custom("dd.MM.yyyy"))
+                    let formattedDate = date!.toString(self.displayDateFormat)
                 
                     if self.concertDict[formattedDate!] == nil {
                         self.concertDict[formattedDate!] = [Concert]()
@@ -100,8 +94,11 @@ class ConcertTableViewController: UITableViewController {
     func updateTableView(concerts: [TableViewObjects]) {
         self.concerts = concerts
         
+        let displayDate = NSDateFormatter()
+        displayDate.dateFormat = "dd.MM.yyyy"
+
         // sort array after date ascending
-        self.concerts.sortInPlace({self.displayDate.dateFromString($0.date)?.compare(self.displayDate.dateFromString($1.date)!) == NSComparisonResult.OrderedAscending})
+        self.concerts.sortInPlace({displayDate.dateFromString($0.date)?.compare(displayDate.dateFromString($1.date)!) == NSComparisonResult.OrderedAscending})
         
         // reload table view to add data
         self.tableView.reloadData()
@@ -179,7 +176,7 @@ class ConcertTableViewController: UITableViewController {
     @IBAction func filterByDate(segue: UIStoryboardSegue)
     {
         print("Selected date: \(selectedDate)")
-        let date = getFormattedDate(self.displayDate, date: self.selectedDate)
+        let date = self.selectedDate.toString(displayDateFormat)!
         let filteredConcerts = [date: self.concertDict[date]]
         if ((filteredConcerts.values.first!?.count) != nil) {
             updateTableView(getTableViewObjects(filteredConcerts))
