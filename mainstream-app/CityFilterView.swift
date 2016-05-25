@@ -13,7 +13,6 @@ class CityFilterView: UITableViewController {
     var citiesSorted = [(String, [String])]()
     
     override func viewDidLoad() {
-        print("city filter view loaded!")
         var citiesDict = [String: [String]]()
         
         for city in cities {
@@ -27,13 +26,6 @@ class CityFilterView: UITableViewController {
             }
         }
         citiesSorted = citiesDict.sort{$0.0 < $1.0}
-    }
-    
-    @IBAction func backButtonClicked(sender: UIButton) {
-        print("go back!")
-        if let navController = self.navigationController {
-            navController.popViewControllerAnimated(true)
-        }
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -52,5 +44,17 @@ class CityFilterView: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("cityCell", forIndexPath: indexPath)
         cell.textLabel?.text = citiesSorted[indexPath.section].1[indexPath.row]
         return cell
+    }
+    
+    @IBAction func cancel(sender: UIBarButtonItem) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+//        set destination view
+        let destination = segue.destinationViewController as! ConcertTableViewController
+        let cell = sender as! UITableViewCell
+//        set filter variable in destination view
+        destination.filterCity = (cell.textLabel?.text)!
     }
 }

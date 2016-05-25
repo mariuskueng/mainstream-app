@@ -22,6 +22,7 @@ class ConcertTableViewController: UITableViewController {
     var concertDict = [String: [Concert]]()
     var cities = [String]()
     var selectedDate = NSDate()
+    var filterCity = ""
     
     let dateFormatter = NSDateFormatter()
     let displayDate = NSDateFormatter()
@@ -205,9 +206,11 @@ class ConcertTableViewController: UITableViewController {
         cityFilterViewController.cities = self.cities
     }
     
-    @IBAction func cancelToConcertTableViewController(segue: UIStoryboardSegue)
+    @IBAction func filterCity(segue: UIStoryboardSegue)
     {
-        
+        if filterCity != "" {
+            print("City filter: \(filterCity)")
+        }
     }
 
 }
