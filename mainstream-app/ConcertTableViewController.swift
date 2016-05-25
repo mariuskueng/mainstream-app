@@ -35,7 +35,7 @@ class ConcertTableViewController: UITableViewController {
         // Do any additional setup after loading the view, typically from a nib.
         // http://stackoverflow.com/questions/31136084/how-can-i-group-tableview-items-from-a-dictionary-in-swift
             
-        apiUrl = "http://localhost:3000/"
+//        apiUrl = "http://localhost:3000/"
         
         Alamofire.request(.GET, apiUrl).response {
             request, response, data, error in
