@@ -208,9 +208,19 @@ class ConcertTableViewController: UITableViewController {
     
     @IBAction func filterCity(segue: UIStoryboardSegue)
     {
-        if filterCity != "" {
-            print("City filter: \(filterCity)")
-        }
+        var filteredConcerts = [String: [Concert]]()
+        // iterate over days
+        self.concertDict.forEach({
+            filteredConcerts[$0] = $1.filter() {concert in
+                concert.city == self.filterCity
+            }
+            
+            if (filteredConcerts[$0]!.count == 0) {
+                filteredConcerts.removeValueForKey($0)
+            }
+        })
+        
+        updateTableView(getTableViewObjects(filteredConcerts))
     }
 
 }
