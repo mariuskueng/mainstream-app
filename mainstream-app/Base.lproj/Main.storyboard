@@ -24,7 +24,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iET-bF-Y8W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-188" y="400"/>
+            <point key="canvasLocation" x="-180.5" y="393.5"/>
         </scene>
         <!--Konzerte-->
         <scene sceneID="fEN-bA-JUc">
@@ -38,8 +38,8 @@
                             <rect key="frame" x="0.0" y="64" width="375" height="109"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filtern nach" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W2h-wC-K6c">
-                                    <rect key="frame" x="18" y="0.0" width="95" height="30"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W2h-wC-K6c">
+                                    <rect key="frame" x="18" y="0.0" width="41" height="30"/>
                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
@@ -63,49 +63,52 @@
                                         </mask>
                                     </variation>
                                     <connections>
-                                        <segue destination="kUQ-b1-Nis" kind="show" id="pMp-pZ-U6R"/>
+                                        <segue destination="kUQ-b1-Nis" kind="show" identifier="segueToCityFilter" id="pMp-pZ-U6R"/>
                                     </connections>
                                 </button>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tt1-sC-9xo">
-                                    <rect key="frame" x="-1" y="32" width="188" height="77"/>
-                                    <subviews>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UYm-Iw-Ayr">
-                                            <rect key="frame" x="45" y="31" width="97" height="30"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                            <connections>
-                                                <action selector="textFieldEditing:" destination="Gh9-yo-PbQ" eventType="editingDidBegin" id="oHf-sn-LUx"/>
-                                            </connections>
-                                        </textField>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Datum" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vNv-Ha-U8R">
-                                            <rect key="frame" x="45" y="8" width="51" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
-                                </view>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z3F-hg-pHE" userLabel="Date Button">
+                                    <rect key="frame" x="0.0" y="32" width="188" height="77"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="188" id="QsI-a2-hRg"/>
+                                        <constraint firstAttribute="width" constant="120" id="e9l-CA-hOU"/>
+                                        <constraint firstAttribute="width" constant="188" id="s5x-29-oRL"/>
+                                        <constraint firstAttribute="width" constant="188" id="v8f-go-4MY"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="11"/>
+                                    <state key="normal" title="Datum" image="ios7-calendar-outline">
+                                        <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="QsI-a2-hRg"/>
+                                            <exclude reference="e9l-CA-hOU"/>
+                                            <exclude reference="v8f-go-4MY"/>
+                                        </mask>
+                                    </variation>
+                                    <connections>
+                                        <segue destination="90f-aI-D2o" kind="presentation" identifier="segueToDatePicker" id="tZq-it-DC4"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
+                                <constraint firstItem="Z3F-hg-pHE" firstAttribute="leading" secondItem="EmO-ub-pPW" secondAttribute="leading" id="00W-Wr-2ws"/>
                                 <constraint firstItem="mzS-DZ-Gnk" firstAttribute="top" secondItem="EmO-ub-pPW" secondAttribute="top" constant="32" id="3GQ-yT-HBT"/>
-                                <constraint firstItem="mzS-DZ-Gnk" firstAttribute="leading" secondItem="tt1-sC-9xo" secondAttribute="trailing" id="AmC-VM-5bD"/>
                                 <constraint firstAttribute="trailing" secondItem="mzS-DZ-Gnk" secondAttribute="trailing" id="Cni-iu-N16"/>
+                                <constraint firstItem="Z3F-hg-pHE" firstAttribute="baseline" secondItem="mzS-DZ-Gnk" secondAttribute="firstBaseline" id="GkD-d5-zx2"/>
                                 <constraint firstAttribute="bottom" secondItem="W2h-wC-K6c" secondAttribute="bottom" constant="79" id="KRa-Bm-miF"/>
                                 <constraint firstAttribute="trailing" secondItem="mzS-DZ-Gnk" secondAttribute="trailing" id="QKL-R8-gXp"/>
                                 <constraint firstItem="W2h-wC-K6c" firstAttribute="leading" secondItem="EmO-ub-pPW" secondAttribute="leading" constant="18" id="VUx-xw-a9B"/>
-                                <constraint firstItem="tt1-sC-9xo" firstAttribute="top" secondItem="mzS-DZ-Gnk" secondAttribute="top" id="dCB-hq-hte"/>
-                                <constraint firstAttribute="trailing" secondItem="tt1-sC-9xo" secondAttribute="trailing" constant="188" id="fea-ov-fC6"/>
+                                <constraint firstItem="mzS-DZ-Gnk" firstAttribute="width" secondItem="Z3F-hg-pHE" secondAttribute="width" id="eM7-gF-BTL"/>
                                 <constraint firstItem="W2h-wC-K6c" firstAttribute="top" secondItem="EmO-ub-pPW" secondAttribute="top" id="fyY-7z-woO"/>
                                 <constraint firstAttribute="bottom" secondItem="mzS-DZ-Gnk" secondAttribute="bottom" id="l2r-7P-jea"/>
+                                <constraint firstItem="Z3F-hg-pHE" firstAttribute="top" secondItem="mzS-DZ-Gnk" secondAttribute="top" id="lTr-xc-4zz"/>
                                 <constraint firstItem="mzS-DZ-Gnk" firstAttribute="top" secondItem="EmO-ub-pPW" secondAttribute="top" constant="32" id="nsE-7v-Utd"/>
-                                <constraint firstItem="tt1-sC-9xo" firstAttribute="leading" secondItem="EmO-ub-pPW" secondAttribute="leading" constant="-1" id="ois-TN-m1w"/>
                                 <constraint firstAttribute="trailing" secondItem="mzS-DZ-Gnk" secondAttribute="trailing" id="pLi-md-bPt"/>
-                                <constraint firstItem="tt1-sC-9xo" firstAttribute="bottom" secondItem="mzS-DZ-Gnk" secondAttribute="bottom" id="pcJ-TM-xAQ"/>
                                 <constraint firstItem="mzS-DZ-Gnk" firstAttribute="leading" secondItem="EmO-ub-pPW" secondAttribute="leading" constant="186" id="qMz-kb-QuK"/>
                                 <constraint firstAttribute="trailing" secondItem="mzS-DZ-Gnk" secondAttribute="trailing" id="rb5-c5-HpW"/>
                                 <constraint firstAttribute="trailing" secondItem="mzS-DZ-Gnk" secondAttribute="trailing" id="s1p-4S-Ppf"/>
+                                <constraint firstItem="Z3F-hg-pHE" firstAttribute="firstBaseline" secondItem="mzS-DZ-Gnk" secondAttribute="baseline" id="vo9-ES-P3U"/>
                             </constraints>
                             <variation key="default">
                                 <mask key="constraints">
@@ -175,17 +178,18 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="cityButton" destination="mzS-DZ-Gnk" id="Ysl-FQ-vsb"/>
-                        <outlet property="dateTextField" destination="UYm-Iw-Ayr" id="98i-vp-TJ5"/>
+                        <outlet property="dateButton" destination="Z3F-hg-pHE" id="gVP-Lz-xLV"/>
+                        <outlet property="dateFilterButton" destination="Z3F-hg-pHE" id="xX2-xa-8fL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p2k-fG-Ect" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="366.5" y="393.5"/>
         </scene>
-        <!--Städte-->
+        <!--City Filter View-->
         <scene sceneID="v4A-w7-kGN">
             <objects>
-                <tableViewController id="9b2-iQ-VXP" customClass="CityFilterView" customModule="mainstream_app" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="9b2-iQ-VXP" userLabel="City Filter View" customClass="CityFilterView" customModule="mainstream_app" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="hqn-Wn-DIH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -202,7 +206,7 @@
                                             <rect key="frame" x="15" y="0.0" width="345" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -235,6 +239,52 @@
             </objects>
             <point key="canvasLocation" x="1490.5" y="393.5"/>
         </scene>
+        <!--Date Picker View-->
+        <scene sceneID="77h-ZV-mAU">
+            <objects>
+                <viewController id="Unj-yE-ZXb" customClass="DatePickerView" customModule="mainstream_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Yv5-sh-aVZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="XX3-n5-PVh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="n3f-F1-SZG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="rNF-ZW-6tR">
+                                <rect key="frame" x="0.0" y="451" width="375" height="216"/>
+                                <date key="date" timeIntervalSinceReferenceDate="485885271.31802303">
+                                    <!--2016-05-25 16:07:51 +0000-->
+                                </date>
+                                <locale key="locale" localeIdentifier="de_CH"/>
+                                <connections>
+                                    <action selector="datePickerValueChanged:" destination="Unj-yE-ZXb" eventType="valueChanged" id="bFr-wD-rm6"/>
+                                </connections>
+                            </datePicker>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="YqU-LT-4qM">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="mlX-HK-SQa">
+                            <connections>
+                                <action selector="cancel:" destination="Unj-yE-ZXb" id="LXf-YD-U4N"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="Cvi-Sh-cCS">
+                            <connections>
+                                <segue destination="Hi5-2y-gua" kind="unwind" unwindAction="filterDate:" id="EGF-es-oav"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="datePicker" destination="rNF-ZW-6tR" id="wg3-nF-YyJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0GH-LM-vdr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Hi5-2y-gua" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1490.5" y="1235.5"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="JZA-4x-sLM">
             <objects>
@@ -254,8 +304,28 @@
             </objects>
             <point key="canvasLocation" x="920.5" y="393.5"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Nrt-yf-I56">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="90f-aI-D2o" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nDm-fO-d9e">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.7725490196" green="0.69803921570000005" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Unj-yE-ZXb" kind="relationship" relationship="rootViewController" id="VZx-Bb-nvc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hWS-2b-Maj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="920.5" y="1235.5"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="ios7-calendar-outline" width="38" height="38"/>
         <image name="ios7-home-outline" width="38" height="38"/>
     </resources>
 </document>

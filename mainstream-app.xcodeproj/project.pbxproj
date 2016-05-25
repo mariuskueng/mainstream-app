@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B0C8A56FCA25C5F20FA3C249 /* Pods_mainstream_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5460D84F502B3A4BB3D86629 /* Pods_mainstream_app.framework */; };
+		B60058A71CF6027700C4DEF7 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60058A61CF6027600C4DEF7 /* DatePickerView.swift */; };
 		B67C70331CA3FB9700807285 /* Concert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67C70321CA3FB9700807285 /* Concert.swift */; };
 		B67C70351CA40F0B00807285 /* ConcertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67C70341CA40F0B00807285 /* ConcertTableViewCell.swift */; };
 		B6C8AFC51CEDD49700350B88 /* CityFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C8AFC41CEDD49700350B88 /* CityFilterView.swift */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		4F52E6B1AFBAEA7BA702590F /* Pods-mainstream-app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mainstream-app.release.xcconfig"; path = "Pods/Target Support Files/Pods-mainstream-app/Pods-mainstream-app.release.xcconfig"; sourceTree = "<group>"; };
 		5460D84F502B3A4BB3D86629 /* Pods_mainstream_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mainstream_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B60058A61CF6027600C4DEF7 /* DatePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		B67C70321CA3FB9700807285 /* Concert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Concert.swift; sourceTree = "<group>"; };
 		B67C70341CA40F0B00807285 /* ConcertTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcertTableViewCell.swift; sourceTree = "<group>"; };
 		B6C8AFC41CEDD49700350B88 /* CityFilterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityFilterView.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 				B67C70321CA3FB9700807285 /* Concert.swift */,
 				B67C70341CA40F0B00807285 /* ConcertTableViewCell.swift */,
 				B6C8AFC41CEDD49700350B88 /* CityFilterView.swift */,
+				B60058A61CF6027600C4DEF7 /* DatePickerView.swift */,
 			);
 			path = "mainstream-app";
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 				B6E604E51CA3EB310088561D /* AppDelegate.swift in Sources */,
 				B67C70331CA3FB9700807285 /* Concert.swift in Sources */,
 				B6C8AFC51CEDD49700350B88 /* CityFilterView.swift in Sources */,
+				B60058A71CF6027700C4DEF7 /* DatePickerView.swift in Sources */,
 				B67C70351CA40F0B00807285 /* ConcertTableViewCell.swift in Sources */,
 				B6E604ED1CA3EB310088561D /* mainstream_app.xcdatamodeld in Sources */,
 			);

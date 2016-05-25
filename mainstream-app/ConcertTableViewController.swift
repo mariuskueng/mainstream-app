@@ -29,7 +29,7 @@ class ConcertTableViewController: UITableViewController {
     var apiUrl = "https://arcane-hollows-16881.herokuapp.com"
     
     @IBOutlet weak var cityButton: UIButton!
-    @IBOutlet weak var dateTextField: UITextField!
+    @IBOutlet weak var dateButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +41,7 @@ class ConcertTableViewController: UITableViewController {
         dateFormatter.timeZone = NSTimeZone(abbreviation: "Europe/Zurich")
         displayDate.timeZone = NSTimeZone(abbreviation: "Europe/Zurich")
             
-//        apiUrl = "http://localhost:3000/"
+        apiUrl = "http://localhost:3000/"
         
         Alamofire.request(.GET, apiUrl).response {
             request, response, data, error in
@@ -83,73 +83,9 @@ class ConcertTableViewController: UITableViewController {
         self.cities = Array(Set(concerts.map{ c in c.city })).sort(<)
     }
     
-    @IBAction func textFieldEditing(sender: UITextField) {
-        //Create the view
-        let inputView = UIView(frame: CGRectMake(0, 0, self.view.frame.width, 240))
-        
-        let datePickerView  : UIDatePicker = UIDatePicker(frame: CGRectMake(0, 40, 0, 0))
-        datePickerView.datePickerMode = UIDatePickerMode.Date
-        inputView.addSubview(datePickerView) // add date picker to UIView
-        
-        let doneButton = UIButton(frame: CGRectMake((self.view.frame.size.width - 100), 0, 100, 50))
-        doneButton.setTitle("Done", forState: UIControlState.Normal)
-        doneButton.setTitle("Done", forState: UIControlState.Highlighted)
-        doneButton.setTitleColor(UIColor(red: 27/255, green: 66/255, blue: 255/255, alpha: 1.0) /* #1b42ff */, forState: UIControlState.Normal)
-        doneButton.setTitleColor(UIColor.grayColor(), forState: UIControlState.Highlighted)
-        
-        let resetButton = UIButton(frame: CGRectMake(20, 0, 100, 50))
-        resetButton.setTitle("Reset filter", forState: UIControlState.Normal)
-        resetButton.setTitle("Reset filter", forState: UIControlState.Highlighted)
-        resetButton.setTitleColor(UIColor(red: 27/255, green: 66/255, blue: 255/255, alpha: 1.0) /* #1b42ff */, forState: UIControlState.Normal)
-        resetButton.setTitleColor(UIColor.grayColor(), forState: UIControlState.Highlighted)
-        
-        inputView.addSubview(doneButton) // add Button to UIView
-        inputView.addSubview(resetButton) // add Button to UIView
-        
-        doneButton.addTarget(self, action: #selector(ConcertTableViewController.doneButtonClicked), forControlEvents: UIControlEvents.TouchUpInside) // set button click event
-        
-        resetButton.addTarget(self, action: #selector(ConcertTableViewController.resetButtonClicked), forControlEvents: UIControlEvents.TouchUpInside) // set button click event
-        
-        sender.inputView = inputView
-        datePickerView.addTarget(self, action: #selector(ConcertTableViewController.datePickerValueChanged), forControlEvents: UIControlEvents.ValueChanged)
-        
-        datePickerValueChanged(datePickerView)
-    }
-    
-    func datePickerValueChanged(sender: UIDatePicker) {
-        self.dateTextField.text = getFormattedDate(self.displayDate, date: sender.date)
-        print("Date picker value changed")
-        self.selectedDate = sender.date
-    }
-    
-    func doneButtonClicked(sender: UIButton)
-    {
-        print("Done button clicked")
-        filterByDate()
-        self.dateTextField.text = getFormattedDate(self.displayDate, date: self.selectedDate)
-        self.dateTextField.resignFirstResponder() // To resign the inputView on clicking done.
-    }
-    
-    func resetButtonClicked(sender: UIButton)
-    {
-        print("Reset button clicked")
-        updateTableView(getTableViewObjects(self.concertDict))
-        self.dateTextField.text = ""
-        self.dateTextField.resignFirstResponder() // To resign the inputView on clicking done.
-    }
-    
     func getFormattedDate(formatter: NSDateFormatter, date: NSDate) -> String {
         formatter.timeZone = NSTimeZone(abbreviation: "Europe/Zurich")
         return formatter.stringFromDate(date)
-    }
-    
-    func filterByDate() {
-        let date = getFormattedDate(self.displayDate, date: self.selectedDate)
-        let filteredConcerts = [date: self.concertDict[date]]
-        if ((filteredConcerts.values.first!?.count) != nil) {
-            updateTableView(getTableViewObjects(filteredConcerts))
-        }
-        
     }
     
     func getTableViewObjects(dict: [String: [Concert]?]) -> [TableViewObjects] {
@@ -199,11 +135,23 @@ class ConcertTableViewController: UITableViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        // Create a new variable to store the instance of current controller
-        let destination = segue.destinationViewController as! UINavigationController
-        let cityFilterViewController = destination.topViewController as! CityFilterView
-        // send data to controller
-        cityFilterViewController.cities = self.cities
+        print(segue.identifier)
+        if segue.identifier == "segueToDatePicker" {
+            print("segue to datepickerview")
+            let destination = segue.destinationViewController as! UINavigationController
+            let datePickerViewController = destination.topViewController as! DatePickerView
+            
+            let dates = Array(self.concertDict.keys).flatMap{$0}
+            datePickerViewController.dateStrings = dates
+        }
+        if segue.identifier == "segueToCityFilter" {
+            print("segue to cityfilterview")
+            // Create a new variable to store the instance of current controller
+            let destination = segue.destinationViewController as! UINavigationController
+            let cityFilterViewController = destination.topViewController as! CityFilterView
+            // send data to controller
+            cityFilterViewController.cities = self.cities
+        }
     }
     
     @IBAction func filterCity(segue: UIStoryboardSegue)
@@ -224,6 +172,16 @@ class ConcertTableViewController: UITableViewController {
                 }
             })
             
+            updateTableView(getTableViewObjects(filteredConcerts))
+        }
+    }
+    
+    @IBAction func filterByDate(segue: UIStoryboardSegue)
+    {
+        print("Selected date: \(selectedDate)")
+        let date = getFormattedDate(self.displayDate, date: self.selectedDate)
+        let filteredConcerts = [date: self.concertDict[date]]
+        if ((filteredConcerts.values.first!?.count) != nil) {
             updateTableView(getTableViewObjects(filteredConcerts))
         }
     }
