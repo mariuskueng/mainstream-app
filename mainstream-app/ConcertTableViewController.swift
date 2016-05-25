@@ -185,6 +185,9 @@ class ConcertTableViewController: UITableViewController {
             updateTableView(getTableViewObjects(filteredConcerts))
         }
     }
+    @IBAction func resetAllFilters(sender: AnyObject) {
+        updateTableView(getTableViewObjects(self.concertDict))
+    }
 
 }
 

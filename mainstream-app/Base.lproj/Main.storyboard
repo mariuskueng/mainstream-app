@@ -174,7 +174,14 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Konzerte" id="aF4-Db-mgD"/>
+                    <navigationItem key="navigationItem" title="Konzerte" id="aF4-Db-mgD">
+                        <barButtonItem key="rightBarButtonItem" title="Filter reset" id="fiT-cS-owq">
+                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="resetAllFilters:" destination="Gh9-yo-PbQ" id="S2T-zk-eWR"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="cityButton" destination="mzS-DZ-Gnk" id="Ysl-FQ-vsb"/>
@@ -222,11 +229,13 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Städte" id="w6U-oA-Ju2">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="EhC-fO-IFr">
+                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="cancel:" destination="9b2-iQ-VXP" id="geK-Z3-M1Y"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Alle Städte" id="9Ty-P6-V0a">
+                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="2fY-2C-gji" kind="unwind" unwindAction="filterCity:" id="Kjf-Fz-u3o"/>
                             </connections>
@@ -265,11 +274,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="YqU-LT-4qM">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="mlX-HK-SQa">
+                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="cancel:" destination="Unj-yE-ZXb" id="LXf-YD-U4N"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="Cvi-Sh-cCS">
+                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="Hi5-2y-gua" kind="unwind" unwindAction="filterByDate:" id="lQv-tw-kqQ"/>
                             </connections>
