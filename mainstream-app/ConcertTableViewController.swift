@@ -155,6 +155,7 @@ class ConcertTableViewController: UITableViewController {
     {
         if self.filterCity == "Alle" {
             updateTableView(getTableViewObjects(self.concertDict))
+            self.cityButton.setTitle("Alle Städte", forState: .Normal)
         }
         else {
             var filteredConcerts = [String: [Concert]]()
@@ -170,6 +171,7 @@ class ConcertTableViewController: UITableViewController {
             })
             
             updateTableView(getTableViewObjects(filteredConcerts))
+            self.cityButton.setTitle(self.filterCity, forState: .Normal)
         }
     }
     
@@ -177,6 +179,7 @@ class ConcertTableViewController: UITableViewController {
     {
         print("Selected date: \(selectedDate)")
         let date = self.selectedDate.toString(displayDateFormat)!
+        self.dateButton.setTitle(date, forState: .Normal)
         let filteredConcerts = [date: self.concertDict[date]]
         if ((filteredConcerts.values.first!?.count) != nil) {
             updateTableView(getTableViewObjects(filteredConcerts))

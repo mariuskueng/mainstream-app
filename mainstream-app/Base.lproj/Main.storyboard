@@ -271,7 +271,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="Cvi-Sh-cCS">
                             <connections>
-                                <segue destination="Hi5-2y-gua" kind="unwind" unwindAction="filterDate:" id="EGF-es-oav"/>
+                                <segue destination="Hi5-2y-gua" kind="unwind" unwindAction="filterByDate:" id="lQv-tw-kqQ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
