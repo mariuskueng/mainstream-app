@@ -187,6 +187,8 @@ class ConcertTableViewController: UITableViewController {
     }
     @IBAction func resetAllFilters(sender: AnyObject) {
         updateTableView(getTableViewObjects(self.concertDict))
+        self.cityButton.setTitle("Alle Städte", forState: .Normal)
+        self.dateButton.setTitle("Datum", forState: .Normal)
     }
 
 }
