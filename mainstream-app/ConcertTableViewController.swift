@@ -25,7 +25,7 @@ class ConcertTableViewController: UITableViewController {
     var filterCity = ""
     let displayDateFormat = DateFormat.Custom("dd.MM.YYYY")
     
-    var apiUrl = "https://arcane-hollows-16881.herokuapp.com"
+    var apiUrl = "http://mainstream.mariuskueng.com"
     
     @IBOutlet weak var cityButton: UIButton!
     @IBOutlet weak var dateButton: UIButton!
